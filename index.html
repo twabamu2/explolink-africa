@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExploreLink Africa</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        body {
+            background: #090D14;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .green {
+            color: #10B981;
+        }
+
+        .card {
+            background: #151C28;
+            border: 1px solid #263244;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .btn {
+            background: #10B981;
+            color: #06130F;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .tab {
+            color: #9CA3AF;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+            flex: 1;
+            padding: 12px 2px;
+        }
+
+        .tab.active {
+            color: #10B981;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        input, textarea {
+            background: #090D14;
+            border: 1px solid #374151;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            width: 100%;
+            margin-top: 8px;
+            box-sizing: border-box;
+        }
+
+        .bottom-nav {
+            background: #111722;
+            border-top: 1px solid #263244;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="p-5 flex justify-between items-center border-b border-gray-800">
+        <div>
+            <h1 class="text-xl font-bold">
+                Explore<span class="green">Link</span>
+            </h1>
+            <p class="text-xs text-gray-400">Discover Africa. Connect Everywhere.</p>
+        </div>
+
+        <button onclick="showPage('messages')" class="text-xl">
+            <i class="fa-regular fa-bell"></i>
+        </button>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="p-4 pb-28">
+
+        <!-- MARKET -->
+        <section id="market" class="page active">
+            <h2 class="text-2xl font-bold mb-2">Explore the Market</h2>
+            <p class="text-gray-400 mb-5">
+                Find places, experiences and services across Africa.
+            </p>
+
+            <input type="text" id="searchBox"
+                   placeholder="Search properties, tours, services..."
+                   oninput="searchListings()">
+
+            <div class="flex gap-2 my-4 flex-wrap">
+                <button class="btn" onclick="filterListings('all')">All</button>
+                <button class="btn" onclick="filterListings('Tourism')">Tourism</button>
+                <button class="btn" onclick="filterListings('Property')">Property</button>
+                <button class="btn" onclick="filterListings('Transport')">Transport</button>
+            </div>
+
+            <div id="listings">
+
+                <div class="card listing" data-category="Tourism">
+                    <div class="text-4xl mb-3">🏞️</div>
+                    <span class="text-xs green">TOURISM</span>
+                    <h3 class="text-lg font-bold mt-2">African Adventure Tours</h3>
+                    <p class="text-gray-400 text-sm mt-2">
+                        Discover beautiful destinations, nature and unforgettable experiences.
+                    </p>
+                    <p class="mt-3 font-bold">Price: Contact seller</p>
+                    <button class="btn mt-4"
+                            onclick="contactSeller('African Adventure Tours')">
+                        <i class="fa-regular fa-paper-plane"></i> Contact
+                    </button>
+                </div>
+
+                <div class="card listing" data-category="Property">
+                    <div class="text-4xl mb-3">🏡</div>
+                    <span class="text-xs green">PROPERTY</span>
+                    <h3 class="text-lg font-bold mt-2">Houses and Land</h3>
+                    <p class="text-gray-400 text-sm mt-2">
+                        Discover houses, cottages, stands and land available for sale or rent.
+                    </p>
+                    <p class="mt-3 font-bold">Price: Depends on property</p>
+                    <button class="btn mt-4"
+                            onclick="contactSeller('Houses and Land')">
+                        <i class="fa-regular fa-paper-plane"></i> Contact
+                    </button>
+                </div>
+
+                <div class="card listing" data-category="Transport">
+                    <div class="text-4xl mb-3">🚐</div>
+                    <span class="text-xs green">TRANSPORT</span>
+                    <h3 class="text-lg font-bold mt-2">Travel and Transport</h3>
+                    <p class="text-gray-400 text-sm mt-2">
+                        Connect with transport providers for trips and local travel.
+                    </p>
+                    <p class="mt-3 font-bold">Price: Contact provider</p>
+                    <button class="btn mt-4"
+                            onclick="contactSeller('Travel and Transport')">
+                        <i class="fa-regular fa-paper-plane"></i> Contact
+                    </button>
+                </div>
+
+            </div>
+
+            <button class="btn w-full mt-2" onclick="showPage('account')">
+                <i class="fa-solid fa-plus"></i> Add Your Listing
+            </button>
+        </section>
+
+        <!-- TRENDING -->
+        <section id="trending" class="page">
+            <h2 class="text-2xl font-bold mb-2">🔥 Trending</h2>
+            <p class="text-gray-400 mb-5">
+                Discover what people are sharing across Africa.
+            </p>
+
+            <div class="card">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="text-3xl">🌍</div>
+                    <div>
+                        <h3 class="font-bold">Explore Africa</h3>
+                        <p class="text-xs text-gray-400">Travel and discovery</p>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg">Your next adventure starts here!</h3>
+                <p class="text-gray-300 mt-2">
+                    Share beautiful places, discover new destinations and connect with people who love exploring.
+                </p>
+                <div class="flex justify-between mt-4 text-gray-400 text-sm">
+                    <button onclick="likePost(this)">
+                        <i class="fa-regular fa-heart"></i> <span>Like</span>
+                    </button>
+                    <button onclick="showPage('messages')">
+                        <i class="fa-regular fa-comment"></i> Message
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="text-4xl mb-3">🌅</div>
+                <h3 class="font-bold text-lg">Explore hidden gems</h3>
+                <p class="text-gray-400 mt-2">
+                    Have you visited a beautiful place that more people should know about?
+                    Share your experience with the ExploreLink community.
+                </p>
+                <button class="btn mt-4" onclick="showPage('account')">
+                    Share Your Experience
+                </button>
+            </div>
+
+            <div class="card">
+                <h3 class="font-bold">Popular categories</h3>
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                    <button class="card" onclick="showPage('market')">🏡 Property</button>
+                    <button class="card" onclick="showPage('market')">🏞️ Tourism</button>
+                    <button class="card" onclick="showPage('market')">🚐 Transport</button>
+                    <button class="card" onclick="showPage('linkup')">🤝 Connect</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MESSAGES -->
+        <section id="messages" class="page">
+            <h2 class="text-2xl font-bold mb-2">💬 Messages</h2>
+            <p class="text-gray-400 mb-5">
+                Connect with sellers and other explorers.
+            </p>
+
+            <div class="card">
+                <div class="text-3xl mb-3">👋</div>
+                <h3 class="font-bold">Welcome to your messages</h3>
+                <p class="text-gray-400 mt-2">
+                    When you contact a seller, you can start organising your conversation here.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 class="font-bold mb-2">Start a conversation</h3>
+                <label class="text-sm text-gray-400">Who do you want to contact?</label>
+                <input type="text" id="recipient" placeholder="Seller or person's name">
+
+                <label class="text-sm text-gray-400 block mt-3">Your message</label>
+                <textarea id="messageText" rows="4"
+                          placeholder="Write your message..."></textarea>
+
+                <button class="btn w-full mt-4" onclick="sendMessage()">
+                    <i class="fa-regular fa-paper-plane"></i> Prepare Message
+                </button>
+
+                <p class="text-xs text-gray-500 mt-3">
+                    Demo only: messages are not yet sent to another user.
+                </p>
+            </div>
+
+            <div id="messageResult" class="card hidden"></div>
+        </section>
+
+        <!-- LINK UP -->
+        <section id="linkup" class="page">
+            <h2 class="text-2xl font-bold mb-2">🤝 Link Up</h2>
+            <p class="text-gray-400 mb-5">
+                Meet people, share ideas and discover opportunities.
+            </p>
+
+            <div class="card">
+                <div class="text-4xl mb-3">🧭</div>
+                <h3 class="font-bold text-lg">Travel Buddies</h3>
+                <p class="text-gray-400 mt-2">
+                    Find people interested in visiting destinations and sharing experiences.
+                </p>
+                <button class="btn mt-4" onclick="showPage('messages')">
+                    Connect
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="text-4xl mb-3">💡</div>
+                <h3 class="font-bold text-lg">Projects and Opportunities</h3>
+                <p class="text-gray-400 mt-2">
+                    Share business ideas, tourism projects and opportunities with the community.
+                </p>
+                <button class="btn mt-4" onclick="showPage('account')">
+                    Share an Idea
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="text-4xl mb-3">🌍</div>
+                <h3 class="font-bold text-lg">Build Your Network</h3>
+                <p class="text-gray-400 mt-2">
+                    Connect with explorers, service providers, property owners and entrepreneurs.
+                </p>
+                <button class="btn mt-4" onclick="showPage('messages')">
+                    Start Connecting
+                </button>
+            </div>
+        </section>
+
+        <!-- ACCOUNT -->
+        <section id="account" class="page">
+            <h2 class="text-2xl font-bold mb-2">👤 Account</h2>
+            <p class="text-gray-400 mb-5">
+                Set up your profile and create a listing.
+            </p>
+
+            <div class="card text-center">
+                <div class="text-6xl mb-3">👤</div>
+                <h3 class="text-xl font-bold">Welcome, Explorer!</h3>
+                <p class="text-gray-400 text-sm mt-2">
+                    Your ExploreLink Africa profile
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 class="font-bold text-lg mb-3">Your Profile</h3>
+
+                <label class="text-sm text-gray-400">Your name</label>
+                <input id="profileName" type="text" placeholder="Enter your name">
+
+                <label class="text-sm text-gray-400 block mt-3">Your location</label>
+                <input id="profileLocation" type="text" placeholder="e.g. Harare, Zimbabwe">
+
+                <label class="text-sm text-gray-400 block mt-3">About you</label>
+                <textarea id="profileAbout" rows="3"
+                          placeholder="Tell people about yourself..."></textarea>
+
+                <button class="btn w-full mt-4" onclick="saveProfile()">
+                    Save Profile
+                </button>
+
+                <p id="profileResult" class="green mt-3 text-sm"></p>
+            </div>
+
+            <div class="card">
+                <h3 class="font-bold text-lg mb-3">Create a Listing</h3>
+
+                <label class="text-sm text-gray-400">Listing title</label>
+                <input id="listingTitle" type="text"
+                       placeholder="e.g. Cottage for sale">
+
+                <label class="text-sm text-gray-400 block mt-3">Category</label>
+                <select id="listingCategory"
+                        class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 mt-2">
+                    <option value="Tourism">Tourism</option>
+                    <option value="Property">Property</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Services">Services</option>
+                </select>
+
+                <label class="text-sm text-gray-400 block mt-3">Price</label>
+                <input id="listingPrice" type="text"
+                       placeholder="e.g. $100 or Negotiable">
+
+                <label class="text-sm text-gray-400 block mt-3">Description</label>
+                <textarea id="listingDescription" rows="4"
+                          placeholder="Describe what you are offering..."></textarea>
+
+                <button class="btn w-full mt-4" onclick="addListing()">
+                    <i class="fa-solid fa-plus"></i> Publish Listing
+                </button>
+
+                <p class="text-xs text-gray-500 mt-3">
+                    Demo only: listings are saved in this browser session and are not yet public to other users.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav fixed bottom-0 left-0 right-0 flex justify-around">
+        <button class="tab active" data-page="market" onclick="showPage('market')">
+            <i class="fa-solid fa-store text-lg block mb-1"></i>
+            Market
+        </button>
+
+        <button class="tab" data-page="trending" onclick="showPage('trending')">
+            <i class="fa-solid fa-fire text-lg block mb-1"></i>
+            Trending
+        </button>
+
+        <button class="tab" data-page="messages" onclick="showPage('messages')">
+            <i class="fa-regular fa-comments text-lg block mb-1"></i>
+            Messages
+        </button>
+
+        <button class="tab" data-page="linkup" onclick="showPage('linkup')">
+            <i class="fa-solid fa-people-group text-lg block mb-1"></i>
+            Link Up
+        </button>
+
+        <button class="tab" data-page="account" onclick="showPage('account')">
+            <i class="fa-regular fa-user text-lg block mb-1"></i>
+            Account
+        </button>
+    </nav>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(function(page) {
+                page.classList.remove('active');
+            });
+
+            document.querySelectorAll('.tab').forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+
+            const page = document.getElementById(pageId);
+
+            if (page) {
+                page.classList.add('active');
+            }
+
+            const activeTab = document.querySelector('[data-page="' + pageId + '"]');
+
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        function contactSeller(sellerName) {
+            document.getElementById('recipient').value = sellerName;
+            showPage('messages');
+        }
+
+        function sendMessage() {
+            const recipient = document.getElementById('recipient').value.trim();
+            const message = document.getElementById('messageText').value.trim();
+            const result = document.getElementById('messageResult');
+
+            if (!recipient || !message) {
+                alert('Please enter the recipient and your message.');
+                return;
+            }
+
+            result.classList.remove('hidden');
+            result.innerHTML =
+                '<h3 class="font-bold green">Message prepared</h3>' +
+                '<p class="mt-2">To: ' + escapeHTML(recipient) + '</p>' +
+                '<p class="mt-2">' + escapeHTML(message) + '</p>' +
+                '<p class="text-xs text-gray-400 mt-3">This is a preview. Sending messages requires a connected backend.</p>';
+
+            document.getElementById('messageText').value = '';
+        }
+
+        function likePost(button) {
+            const label = button.querySelector('span');
+
+            if (label.textContent === 'Like') {
+                label.textContent = 'Liked';
+                button.querySelector('i').className = 'fa-solid fa-heart green';
+            } else {
+                label.textContent = 'Like';
+                button.querySelector('i').className = 'fa-regular fa-heart';
+            }
+        }
+
+        function saveProfile() {
+            const name = document.getElementById('profileName').value.trim();
+            const location = document.getElementById('profileLocation').value.trim();
+            const about = document.getElementById('profileAbout').value.trim();
+
+            if (!name) {
+                alert('Please enter your name.');
+                return;
+            }
+
+            try {
+                localStorage.setItem('explorelinkProfile', JSON.stringify({
+                    name: name,
+                    location: location,
+                    about: about
+                }));
+
+                document.getElementById('profileResult').textContent =
+                    'Profile saved on this device.';
+            } catch (error) {
+                document.getElementById('profileResult').textContent =
+                    'Your profile could not be saved in this browser.';
+            }
+        }
+
+        function addListing() {
+            const title = document.getElementById('listingTitle').value.trim();
+            const category = document.getElementById('listingCategory').value;
+            const price = document.getElementById('listingPrice').value.trim();
+            const description = document.getElementById('listingDescription').value.trim();
+
+            if (!title || !description) {
+                alert('Please enter a listing title and description.');
+                return;
+            }
+
+            const listing = document.createElement('div');
+            listing.className = 'card listing';
+            listing.dataset.category = category;
+
+            listing.innerHTML =
+                '<span class="text-xs green">' + escapeHTML(category.toUpperCase()) + '</span>' +
+                '<h3 class="text-lg font-bold mt-2">' + escapeHTML(title) + '</h3>' +
+                '<p class="text-gray-400 text-sm mt-2">' + escapeHTML(description) + '</p>' +
+                '<p class="mt-3 font-bold">Price: ' + escapeHTML(price || 'Contact seller') + '</p>' +
+                '<button class="btn mt-4 contact-button">Contact</button>';
+
+            listing.querySelector('.contact-button').addEventListener('click', function() {
+                contactSeller(title);
+            });
+
+            document.getElementById('listings').prepend(listing);
+
+            document.getElementById('listingTitle').value = '';
+            document.getElementById('listingPrice').value = '';
+            document.getElementById('listingDescription').value = '';
+
+            alert('Your listing has been added to the Market on this page.');
+            showPage('market');
+        }
+
+        function filterListings(category) {
+            document.querySelectorAll('.listing').forEach(function(listing) {
+                listing.style.display =
+                    category === 'all' || listing.dataset.category === category
+                    ? 'block'
+                    : 'none';
+            });
+        }
+
+        function searchListings() {
+            const query = document.getElementById('searchBox').value.toLowerCase();
+
+            document.querySelectorAll('.listing').forEach(function(listing) {
+                listing.style.display =
+                    listing.textContent.toLowerCase().includes(query)
+                    ? 'block'
+                    : 'none';
+            });
+        }
+
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, function(character) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                }[character];
+            });
+        }
+
+        // Restore the saved profile when the page opens.
+        try {
+            const savedProfile = JSON.parse(
+                localStorage.getItem('explorelinkProfile') || 'null'
+            );
+
+            if (savedProfile) {
+                document.getElementById('profileName').value = savedProfile.name || '';
+                document.getElementById('profileLocation').value = savedProfile.location || '';
+                document.getElementById('profileAbout').value = savedProfile.about || '';
+            }
+        } catch (error) {
+            console.log('No saved profile available.');
+        }
+    </script>
+
+</body>
+</html>
