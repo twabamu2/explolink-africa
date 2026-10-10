@@ -1,568 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExploreLink Africa</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <style>
-        body {
-            background: #090D14;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-        }
-
-        .green {
-            color: #10B981;
-        }
-
-        .card {
-            background: #151C28;
-            border: 1px solid #263244;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-
-        .btn {
-            background: #10B981;
-            color: #06130F;
-            padding: 10px 16px;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .tab {
-            color: #9CA3AF;
-            font-size: 12px;
-            text-align: center;
-            cursor: pointer;
-            flex: 1;
-            padding: 12px 2px;
-        }
-
-        .tab.active {
-            color: #10B981;
-        }
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        input, textarea {
-            background: #090D14;
-            border: 1px solid #374151;
-            color: white;
-            padding: 12px;
-            border-radius: 10px;
-            width: 100%;
-            margin-top: 8px;
-            box-sizing: border-box;
-        }
-
-        .bottom-nav {
-            background: #111722;
-            border-top: 1px solid #263244;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#071b16" />
+<title>ExploreLink Africa | Trade. Connect. Deliver.</title>
+<style>
+:root{--bg:#07130f;--panel:#0e211a;--panel2:#132a21;--line:#244235;--text:#f0f8f3;--muted:#a8bcb1;--green:#20c982;--green2:#0ca76a;--gold:#ffc96b;--red:#ff8585;--radius:20px;--shadow:0 18px 45px #0003}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% -10%,#15432e 0,transparent 32%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{max-width:1240px;margin:auto;padding:0 22px 100px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 0 18px}.brand{display:flex;align-items:center;gap:12px;min-width:0}.logo{width:47px;height:47px;border-radius:15px;background:linear-gradient(140deg,#54e9a3,#079e67);display:grid;place-items:center;color:#042016;font-size:25px;font-weight:900;box-shadow:0 8px 24px #1ec98430}.brand-name{font-weight:850;letter-spacing:-.5px;font-size:19px}.brand-tag{font-size:12px;color:var(--muted)}.top-actions{display:flex;gap:10px;align-items:center}.pill{border:1px solid var(--line);border-radius:999px;padding:9px 13px;color:#cfe3d6;background:#0c2119;font-size:12px}.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:18px;align-items:stretch;margin:10px 0 24px}.hero-main{position:relative;overflow:hidden;border:1px solid #28654a;border-radius:26px;min-height:270px;padding:34px;background:linear-gradient(112deg,#123c2b 0%,#0d291e 60%,#102018 100%);box-shadow:var(--shadow)}.hero-main:after{content:"🌽";position:absolute;right:8%;bottom:-40px;font-size:150px;opacity:.12;transform:rotate(-15deg)}.eyebrow{display:inline-flex;align-items:center;gap:7px;color:#9cf2c5;font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px #20c98218}.hero h1{font-size:clamp(31px,4.2vw,50px);letter-spacing:-1.8px;line-height:1.08;margin:15px 0 12px;max-width:650px}.hero h1 span{color:#65e9ad}.hero p{color:#c3d6ca;max-width:540px;margin:0 0 22px}.hero-ctas{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:12px 16px;background:var(--green);color:#052016;font-weight:800;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn.secondary{border:1px solid #3a614d;background:#163528;color:#e3f5e9}.btn.ghost{background:transparent;border:1px solid var(--line);color:#d9e9df}.btn.small{padding:8px 11px;font-size:12px;border-radius:10px}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.hero-side{border:1px solid var(--line);border-radius:26px;padding:23px;background:linear-gradient(155deg,#10291f,#0b1a14);display:flex;flex-direction:column;justify-content:space-between;gap:20px}.side-top{display:flex;align-items:center;justify-content:space-between}.side-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:#1b4431;font-size:23px}.hero-side h3{margin:15px 0 4px;font-size:20px}.hero-side p{margin:0;font-size:13px;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid var(--line);padding-top:16px}.stat strong{display:block;font-size:16px}.stat span{font-size:10px;color:var(--muted)}.main-nav{display:flex;gap:5px;overflow-x:auto;padding:7px;background:#091a13;border:1px solid #1d3a2c;border-radius:16px;margin-bottom:24px;scrollbar-width:none}.main-nav::-webkit-scrollbar{display:none}.nav-btn{flex:1;min-width:max-content;background:transparent;border:0;color:#a8c0b2;padding:12px 16px;border-radius:11px;font-weight:750}.nav-btn.active{background:#1ab875;color:#042318;box-shadow:0 7px 22px #0bbb7022}.section{display:none;animation:fade .2s ease}.section.active{display:block}@keyframes fade{from{opacity:.5;transform:translateY(3px)}to{opacity:1;transform:none}}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:25px 0 18px}.section-head h2{font-size:25px;letter-spacing:-.7px;margin:0}.section-head p{color:var(--muted);margin:5px 0 0}.section-label{color:#78e7ae;letter-spacing:1.3px;font-size:10px;font-weight:850;text-transform:uppercase}.searchbar{display:grid;grid-template-columns:1fr 210px;gap:10px;margin-bottom:15px}.control{width:100%;background:#0b1d15;color:var(--text);border:1px solid #294637;border-radius:12px;padding:12px 14px;outline:none}.control:focus{border-color:#37d995;box-shadow:0 0 0 3px #20c9821b}.control::placeholder{color:#779183}textarea.control{resize:vertical;min-height:92px}.category-row{display:flex;gap:8px;overflow-x:auto;padding:2px 0 14px;scrollbar-width:thin}.cat-btn{white-space:nowrap;border:1px solid var(--line);background:#0c2118;color:#b8d0c0;border-radius:999px;padding:9px 14px;font-size:12px;font-weight:750}.cat-btn.active{background:#d9ffea;border-color:#d9ffea;color:#093321}.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.product-card{background:linear-gradient(155deg,#12261d,#0c1a13);border:1px solid #234333;border-radius:19px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .18s,border-color .18s}.product-card:hover{transform:translateY(-3px);border-color:#397e5a}.product-art{height:145px;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 50% 35%,#285c3b,#102b1e 68%);font-size:69px}.product-art.blue{background:radial-gradient(circle at 50% 35%,#245b60,#10252a 68%)}.product-art.gold{background:radial-gradient(circle at 50% 35%,#6b5125,#2a2111 68%)}.product-art.purple{background:radial-gradient(circle at 50% 35%,#54375d,#201629 68%)}.product-art.orange{background:radial-gradient(circle at 50% 35%,#74452c,#2a1c15 68%)}.product-art .tag{position:absolute;left:12px;top:12px;border:1px solid #ffffff22;background:#081810b8;color:#c3f7d8;border-radius:999px;padding:5px 8px;font-size:9px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;backdrop-filter:blur(10px)}.product-body{padding:15px;display:flex;flex-direction:column;gap:9px;flex:1}.product-title{font-weight:850;font-size:16px;line-height:1.25;margin:0}.product-desc{font-size:12px;color:var(--muted);margin:0;min-height:36px}.price{font-size:20px;font-weight:900;color:#70efb3;letter-spacing:-.5px}.price small{font-size:11px;color:#9db7a7;font-weight:600;letter-spacing:0}.seller-line{font-size:11px;color:#b3c8bb;display:flex;gap:6px;align-items:center}.seller-dot{width:20px;height:20px;border-radius:50%;background:#224d37;display:grid;place-items:center;color:#9af0bd;font-size:10px;font-weight:900}.meta-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 0;border-top:1px solid #20392b;border-bottom:1px solid #20392b;font-size:11px;color:#b7cabc}.eta{color:#ffd88c;font-weight:800}.card-actions{display:flex;gap:8px;margin-top:auto}.card-actions .btn{flex:1}.empty{border:1px dashed #315540;border-radius:18px;padding:38px 20px;text-align:center;color:var(--muted);grid-column:1/-1}.empty strong{display:block;color:#deefe4;font-size:17px;margin-bottom:5px}.feature-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}.feature{border:1px solid var(--line);border-radius:16px;background:#0d2018;padding:16px;display:flex;gap:12px;align-items:flex-start}.feature-icon{width:38px;height:38px;display:grid;place-items:center;background:#183b2b;border-radius:12px;font-size:20px;flex-shrink:0}.feature strong{display:block;font-size:13px}.feature p{margin:3px 0 0;color:var(--muted);font-size:11px}.panel{border:1px solid var(--line);background:linear-gradient(160deg,#10251b,#0b1913);border-radius:20px;padding:22px;margin-bottom:15px}.panel h3{margin:0 0 5px;font-size:18px}.panel>p{margin:0 0 17px;color:var(--muted);font-size:13px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:12px;color:#c2d6c9;font-weight:750}.field.full{grid-column:1/-1}.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.notice{border:1px solid #66552e;background:#332914;color:#ffdf9b;padding:12px 14px;border-radius:12px;font-size:12px;margin:14px 0}.info{border:1px solid #2c5a43;background:#102f20;color:#c8f4d9;padding:12px 14px;border-radius:12px;font-size:12px;margin:14px 0}.item-list{display:flex;flex-direction:column;gap:10px}.order-row,.message-row,.trend-card{border:1px solid var(--line);background:#0e2118;border-radius:15px;padding:15px;display:flex;gap:13px;align-items:flex-start}.order-symbol{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:#193b2b;font-size:21px;flex-shrink:0}.order-main{flex:1;min-width:0}.order-main strong{display:block}.muted{font-size:12px;color:var(--muted)}.order-status{font-size:10px;color:#9bf0bd;background:#183c2a;border-radius:999px;padding:5px 8px;white-space:nowrap}.trend-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.trend-card{display:block}.trend-card .trend-icon{font-size:28px}.trend-card h3{margin:10px 0 4px}.trend-card p{font-size:12px;color:var(--muted);margin:0}.message-tools{display:flex;gap:8px;margin-bottom:12px}.message-row{align-items:center}.message-row .order-symbol{font-size:17px}.message-row .btn{margin-left:auto}.footer{display:flex;justify-content:space-between;gap:15px;border-top:1px solid #1e392b;margin-top:35px;padding-top:20px;color:#718d7c;font-size:11px}.footer strong{color:#9bc7ad}.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#d9ffea;color:#082719;padding:12px 18px;border-radius:12px;font-weight:800;font-size:13px;box-shadow:var(--shadow);transition:.2s;z-index:50;max-width:90vw}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-backdrop{display:none;position:fixed;inset:0;background:#000b;z-index:40;padding:18px;overflow:auto;align-items:center;justify-content:center}.modal-backdrop.show{display:flex}.modal{width:min(600px,100%);max-height:calc(100vh - 36px);overflow:auto;background:#0e2118;border:1px solid #31533e;border-radius:22px;padding:22px;box-shadow:0 30px 90px #0008}.modal-top{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:18px}.modal-top h3{margin:0;font-size:21px}.close{background:#1c3628;border:1px solid var(--line);color:white;border-radius:10px;width:36px;height:36px;font-size:20px}.hidden{display:none!important}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.hero-side{min-height:180px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feature-strip{grid-template-columns:1fr}.trend-list{grid-template-columns:1fr}}
+@media(max-width:560px){.shell{padding:0 12px 85px}.topbar{padding-top:15px}.brand-name{font-size:16px}.brand-tag{font-size:10px}.logo{width:41px;height:41px}.pill{display:none}.hero-main{padding:25px 20px;min-height:295px}.hero h1{font-size:36px}.hero:after{font-size:100px}.hero-side{padding:19px}.section-head{align-items:flex-start;flex-direction:column}.section-head h2{font-size:22px}.searchbar{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr}.product-card{display:grid;grid-template-columns:112px minmax(0,1fr)}.product-art{height:100%;min-height:250px;font-size:50px}.product-art .tag{left:7px;top:7px;font-size:8px}.product-body{padding:13px}.product-desc{min-height:0}.price{font-size:18px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.main-nav{margin-bottom:18px}.nav-btn{padding:11px 12px;font-size:12px}.panel{padding:16px}.footer{flex-direction:column}}
+</style>
 </head>
-
 <body>
-
-    <!-- HEADER -->
-    <header class="p-5 flex justify-between items-center border-b border-gray-800">
-        <div>
-            <h1 class="text-xl font-bold">
-                Explore<span class="green">Link</span>
-            </h1>
-            <p class="text-xs text-gray-400">Discover Africa. Connect Everywhere.</p>
-        </div>
-
-        <button onclick="showPage('messages')" class="text-xl">
-            <i class="fa-regular fa-bell"></i>
-        </button>
-    </header>
-
-    <!-- MAIN CONTENT -->
-    <main class="p-4 pb-28">
-
-        <!-- MARKET -->
-        <section id="market" class="page active">
-            <h2 class="text-2xl font-bold mb-2">Explore the Market</h2>
-            <p class="text-gray-400 mb-5">
-                Find places, experiences and services across Africa.
-            </p>
-
-            <input type="text" id="searchBox"
-                   placeholder="Search properties, tours, services..."
-                   oninput="searchListings()">
-
-            <div class="flex gap-2 my-4 flex-wrap">
-                <button class="btn" onclick="filterListings('all')">All</button>
-                <button class="btn" onclick="filterListings('Tourism')">Tourism</button>
-                <button class="btn" onclick="filterListings('Property')">Property</button>
-                <button class="btn" onclick="filterListings('Transport')">Transport</button>
-            </div>
-
-            <div id="listings">
-
-                <div class="card listing" data-category="Tourism">
-                    <div class="text-4xl mb-3">🏞️</div>
-                    <span class="text-xs green">TOURISM</span>
-                    <h3 class="text-lg font-bold mt-2">African Adventure Tours</h3>
-                    <p class="text-gray-400 text-sm mt-2">
-                        Discover beautiful destinations, nature and unforgettable experiences.
-                    </p>
-                    <p class="mt-3 font-bold">Price: Contact seller</p>
-                    <button class="btn mt-4"
-                            onclick="contactSeller('African Adventure Tours')">
-                        <i class="fa-regular fa-paper-plane"></i> Contact
-                    </button>
-                </div>
-
-                <div class="card listing" data-category="Property">
-                    <div class="text-4xl mb-3">🏡</div>
-                    <span class="text-xs green">PROPERTY</span>
-                    <h3 class="text-lg font-bold mt-2">Houses and Land</h3>
-                    <p class="text-gray-400 text-sm mt-2">
-                        Discover houses, cottages, stands and land available for sale or rent.
-                    </p>
-                    <p class="mt-3 font-bold">Price: Depends on property</p>
-                    <button class="btn mt-4"
-                            onclick="contactSeller('Houses and Land')">
-                        <i class="fa-regular fa-paper-plane"></i> Contact
-                    </button>
-                </div>
-
-                <div class="card listing" data-category="Transport">
-                    <div class="text-4xl mb-3">🚐</div>
-                    <span class="text-xs green">TRANSPORT</span>
-                    <h3 class="text-lg font-bold mt-2">Travel and Transport</h3>
-                    <p class="text-gray-400 text-sm mt-2">
-                        Connect with transport providers for trips and local travel.
-                    </p>
-                    <p class="mt-3 font-bold">Price: Contact provider</p>
-                    <button class="btn mt-4"
-                            onclick="contactSeller('Travel and Transport')">
-                        <i class="fa-regular fa-paper-plane"></i> Contact
-                    </button>
-                </div>
-
-            </div>
-
-            <button class="btn w-full mt-2" onclick="showPage('account')">
-                <i class="fa-solid fa-plus"></i> Add Your Listing
-            </button>
-        </section>
-
-        <!-- TRENDING -->
-        <section id="trending" class="page">
-            <h2 class="text-2xl font-bold mb-2">🔥 Trending</h2>
-            <p class="text-gray-400 mb-5">
-                Discover what people are sharing across Africa.
-            </p>
-
-            <div class="card">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="text-3xl">🌍</div>
-                    <div>
-                        <h3 class="font-bold">Explore Africa</h3>
-                        <p class="text-xs text-gray-400">Travel and discovery</p>
-                    </div>
-                </div>
-                <h3 class="font-bold text-lg">Your next adventure starts here!</h3>
-                <p class="text-gray-300 mt-2">
-                    Share beautiful places, discover new destinations and connect with people who love exploring.
-                </p>
-                <div class="flex justify-between mt-4 text-gray-400 text-sm">
-                    <button onclick="likePost(this)">
-                        <i class="fa-regular fa-heart"></i> <span>Like</span>
-                    </button>
-                    <button onclick="showPage('messages')">
-                        <i class="fa-regular fa-comment"></i> Message
-                    </button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="text-4xl mb-3">🌅</div>
-                <h3 class="font-bold text-lg">Explore hidden gems</h3>
-                <p class="text-gray-400 mt-2">
-                    Have you visited a beautiful place that more people should know about?
-                    Share your experience with the ExploreLink community.
-                </p>
-                <button class="btn mt-4" onclick="showPage('account')">
-                    Share Your Experience
-                </button>
-            </div>
-
-            <div class="card">
-                <h3 class="font-bold">Popular categories</h3>
-                <div class="grid grid-cols-2 gap-3 mt-4">
-                    <button class="card" onclick="showPage('market')">🏡 Property</button>
-                    <button class="card" onclick="showPage('market')">🏞️ Tourism</button>
-                    <button class="card" onclick="showPage('market')">🚐 Transport</button>
-                    <button class="card" onclick="showPage('linkup')">🤝 Connect</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- MESSAGES -->
-        <section id="messages" class="page">
-            <h2 class="text-2xl font-bold mb-2">💬 Messages</h2>
-            <p class="text-gray-400 mb-5">
-                Connect with sellers and other explorers.
-            </p>
-
-            <div class="card">
-                <div class="text-3xl mb-3">👋</div>
-                <h3 class="font-bold">Welcome to your messages</h3>
-                <p class="text-gray-400 mt-2">
-                    When you contact a seller, you can start organising your conversation here.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3 class="font-bold mb-2">Start a conversation</h3>
-                <label class="text-sm text-gray-400">Who do you want to contact?</label>
-                <input type="text" id="recipient" placeholder="Seller or person's name">
-
-                <label class="text-sm text-gray-400 block mt-3">Your message</label>
-                <textarea id="messageText" rows="4"
-                          placeholder="Write your message..."></textarea>
-
-                <button class="btn w-full mt-4" onclick="sendMessage()">
-                    <i class="fa-regular fa-paper-plane"></i> Prepare Message
-                </button>
-
-                <p class="text-xs text-gray-500 mt-3">
-                    Demo only: messages are not yet sent to another user.
-                </p>
-            </div>
-
-            <div id="messageResult" class="card hidden"></div>
-        </section>
-
-        <!-- LINK UP -->
-        <section id="linkup" class="page">
-            <h2 class="text-2xl font-bold mb-2">🤝 Link Up</h2>
-            <p class="text-gray-400 mb-5">
-                Meet people, share ideas and discover opportunities.
-            </p>
-
-            <div class="card">
-                <div class="text-4xl mb-3">🧭</div>
-                <h3 class="font-bold text-lg">Travel Buddies</h3>
-                <p class="text-gray-400 mt-2">
-                    Find people interested in visiting destinations and sharing experiences.
-                </p>
-                <button class="btn mt-4" onclick="showPage('messages')">
-                    Connect
-                </button>
-            </div>
-
-            <div class="card">
-                <div class="text-4xl mb-3">💡</div>
-                <h3 class="font-bold text-lg">Projects and Opportunities</h3>
-                <p class="text-gray-400 mt-2">
-                    Share business ideas, tourism projects and opportunities with the community.
-                </p>
-                <button class="btn mt-4" onclick="showPage('account')">
-                    Share an Idea
-                </button>
-            </div>
-
-            <div class="card">
-                <div class="text-4xl mb-3">🌍</div>
-                <h3 class="font-bold text-lg">Build Your Network</h3>
-                <p class="text-gray-400 mt-2">
-                    Connect with explorers, service providers, property owners and entrepreneurs.
-                </p>
-                <button class="btn mt-4" onclick="showPage('messages')">
-                    Start Connecting
-                </button>
-            </div>
-        </section>
-
-        <!-- ACCOUNT -->
-        <section id="account" class="page">
-            <h2 class="text-2xl font-bold mb-2">👤 Account</h2>
-            <p class="text-gray-400 mb-5">
-                Set up your profile and create a listing.
-            </p>
-
-            <div class="card text-center">
-                <div class="text-6xl mb-3">👤</div>
-                <h3 class="text-xl font-bold">Welcome, Explorer!</h3>
-                <p class="text-gray-400 text-sm mt-2">
-                    Your ExploreLink Africa profile
-                </p>
-            </div>
-
-            <div class="card">
-                <h3 class="font-bold text-lg mb-3">Your Profile</h3>
-
-                <label class="text-sm text-gray-400">Your name</label>
-                <input id="profileName" type="text" placeholder="Enter your name">
-
-                <label class="text-sm text-gray-400 block mt-3">Your location</label>
-                <input id="profileLocation" type="text" placeholder="e.g. Harare, Zimbabwe">
-
-                <label class="text-sm text-gray-400 block mt-3">About you</label>
-                <textarea id="profileAbout" rows="3"
-                          placeholder="Tell people about yourself..."></textarea>
-
-                <button class="btn w-full mt-4" onclick="saveProfile()">
-                    Save Profile
-                </button>
-
-                <p id="profileResult" class="green mt-3 text-sm"></p>
-            </div>
-
-            <div class="card">
-                <h3 class="font-bold text-lg mb-3">Create a Listing</h3>
-
-                <label class="text-sm text-gray-400">Listing title</label>
-                <input id="listingTitle" type="text"
-                       placeholder="e.g. Cottage for sale">
-
-                <label class="text-sm text-gray-400 block mt-3">Category</label>
-                <select id="listingCategory"
-                        class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 mt-2">
-                    <option value="Tourism">Tourism</option>
-                    <option value="Property">Property</option>
-                    <option value="Transport">Transport</option>
-                    <option value="Services">Services</option>
-                </select>
-
-                <label class="text-sm text-gray-400 block mt-3">Price</label>
-                <input id="listingPrice" type="text"
-                       placeholder="e.g. $100 or Negotiable">
-
-                <label class="text-sm text-gray-400 block mt-3">Description</label>
-                <textarea id="listingDescription" rows="4"
-                          placeholder="Describe what you are offering..."></textarea>
-
-                <button class="btn w-full mt-4" onclick="addListing()">
-                    <i class="fa-solid fa-plus"></i> Publish Listing
-                </button>
-
-                <p class="text-xs text-gray-500 mt-3">
-                    Demo only: listings are saved in this browser session and are not yet public to other users.
-                </p>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- BOTTOM NAVIGATION -->
-    <nav class="bottom-nav fixed bottom-0 left-0 right-0 flex justify-around">
-        <button class="tab active" data-page="market" onclick="showPage('market')">
-            <i class="fa-solid fa-store text-lg block mb-1"></i>
-            Market
-        </button>
-
-        <button class="tab" data-page="trending" onclick="showPage('trending')">
-            <i class="fa-solid fa-fire text-lg block mb-1"></i>
-            Trending
-        </button>
-
-        <button class="tab" data-page="messages" onclick="showPage('messages')">
-            <i class="fa-regular fa-comments text-lg block mb-1"></i>
-            Messages
-        </button>
-
-        <button class="tab" data-page="linkup" onclick="showPage('linkup')">
-            <i class="fa-solid fa-people-group text-lg block mb-1"></i>
-            Link Up
-        </button>
-
-        <button class="tab" data-page="account" onclick="showPage('account')">
-            <i class="fa-regular fa-user text-lg block mb-1"></i>
-            Account
-        </button>
-    </nav>
-
-    <!-- JAVASCRIPT -->
-    <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(function(page) {
-                page.classList.remove('active');
-            });
-
-            document.querySelectorAll('.tab').forEach(function(tab) {
-                tab.classList.remove('active');
-            });
-
-            const page = document.getElementById(pageId);
-
-            if (page) {
-                page.classList.add('active');
-            }
-
-            const activeTab = document.querySelector('[data-page="' + pageId + '"]');
-
-            if (activeTab) {
-                activeTab.classList.add('active');
-            }
-
-            window.scrollTo(0, 0);
-        }
-
-        function contactSeller(sellerName) {
-            document.getElementById('recipient').value = sellerName;
-            showPage('messages');
-        }
-
-        function sendMessage() {
-            const recipient = document.getElementById('recipient').value.trim();
-            const message = document.getElementById('messageText').value.trim();
-            const result = document.getElementById('messageResult');
-
-            if (!recipient || !message) {
-                alert('Please enter the recipient and your message.');
-                return;
-            }
-
-            result.classList.remove('hidden');
-            result.innerHTML =
-                '<h3 class="font-bold green">Message prepared</h3>' +
-                '<p class="mt-2">To: ' + escapeHTML(recipient) + '</p>' +
-                '<p class="mt-2">' + escapeHTML(message) + '</p>' +
-                '<p class="text-xs text-gray-400 mt-3">This is a preview. Sending messages requires a connected backend.</p>';
-
-            document.getElementById('messageText').value = '';
-        }
-
-        function likePost(button) {
-            const label = button.querySelector('span');
-
-            if (label.textContent === 'Like') {
-                label.textContent = 'Liked';
-                button.querySelector('i').className = 'fa-solid fa-heart green';
-            } else {
-                label.textContent = 'Like';
-                button.querySelector('i').className = 'fa-regular fa-heart';
-            }
-        }
-
-        function saveProfile() {
-            const name = document.getElementById('profileName').value.trim();
-            const location = document.getElementById('profileLocation').value.trim();
-            const about = document.getElementById('profileAbout').value.trim();
-
-            if (!name) {
-                alert('Please enter your name.');
-                return;
-            }
-
-            try {
-                localStorage.setItem('explorelinkProfile', JSON.stringify({
-                    name: name,
-                    location: location,
-                    about: about
-                }));
-
-                document.getElementById('profileResult').textContent =
-                    'Profile saved on this device.';
-            } catch (error) {
-                document.getElementById('profileResult').textContent =
-                    'Your profile could not be saved in this browser.';
-            }
-        }
-
-        function addListing() {
-            const title = document.getElementById('listingTitle').value.trim();
-            const category = document.getElementById('listingCategory').value;
-            const price = document.getElementById('listingPrice').value.trim();
-            const description = document.getElementById('listingDescription').value.trim();
-
-            if (!title || !description) {
-                alert('Please enter a listing title and description.');
-                return;
-            }
-
-            const listing = document.createElement('div');
-            listing.className = 'card listing';
-            listing.dataset.category = category;
-
-            listing.innerHTML =
-                '<span class="text-xs green">' + escapeHTML(category.toUpperCase()) + '</span>' +
-                '<h3 class="text-lg font-bold mt-2">' + escapeHTML(title) + '</h3>' +
-                '<p class="text-gray-400 text-sm mt-2">' + escapeHTML(description) + '</p>' +
-                '<p class="mt-3 font-bold">Price: ' + escapeHTML(price || 'Contact seller') + '</p>' +
-                '<button class="btn mt-4 contact-button">Contact</button>';
-
-            listing.querySelector('.contact-button').addEventListener('click', function() {
-                contactSeller(title);
-            });
-
-            document.getElementById('listings').prepend(listing);
-
-            document.getElementById('listingTitle').value = '';
-            document.getElementById('listingPrice').value = '';
-            document.getElementById('listingDescription').value = '';
-
-            alert('Your listing has been added to the Market on this page.');
-            showPage('market');
-        }
-
-        function filterListings(category) {
-            document.querySelectorAll('.listing').forEach(function(listing) {
-                listing.style.display =
-                    category === 'all' || listing.dataset.category === category
-                    ? 'block'
-                    : 'none';
-            });
-        }
-
-        function searchListings() {
-            const query = document.getElementById('searchBox').value.toLowerCase();
-
-            document.querySelectorAll('.listing').forEach(function(listing) {
-                listing.style.display =
-                    listing.textContent.toLowerCase().includes(query)
-                    ? 'block'
-                    : 'none';
-            });
-        }
-
-        function escapeHTML(value) {
-            return String(value).replace(/[&<>"']/g, function(character) {
-                return {
-                    '&': '&amp;',
-                    '<': '&lt;',
-                    '>': '&gt;',
-                    '"': '&quot;',
-                    "'": '&#039;'
-                }[character];
-            });
-        }
-
-        // Restore the saved profile when the page opens.
-        try {
-            const savedProfile = JSON.parse(
-                localStorage.getItem('explorelinkProfile') || 'null'
-            );
-
-            if (savedProfile) {
-                document.getElementById('profileName').value = savedProfile.name || '';
-                document.getElementById('profileLocation').value = savedProfile.location || '';
-                document.getElementById('profileAbout').value = savedProfile.about || '';
-            }
-        } catch (error) {
-            console.log('No saved profile available.');
-        }
-    </script>
-
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="logo">↗</div><div><div class="brand-name">ExploreLink Africa</div><div class="brand-tag">Trade. Connect. Deliver.</div></div></div>
+    <div class="top-actions"><span class="pill">🇿🇼 Built for African trade</span><button class="btn small" onclick="openSection('account')">＋ Sell products</button></div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-main">
+      <div class="eyebrow"><span class="dot"></span> Your local trade connection</div>
+      <h1>Find good products.<br><span>Buy closer. Grow together.</span></h1>
+      <p>Discover crops, food, fish, equipment and everyday goods from sellers near you. Agree on delivery directly with each seller.</p>
+      <div class="hero-ctas"><button class="btn" onclick="openSection('market')">Explore the market ↗</button><button class="btn secondary" onclick="openSection('account')">Start selling</button></div>
+    </div>
+    <aside class="hero-side">
+      <div><div class="side-top"><div class="eyebrow">Made for practical trade</div><div class="side-icon">🧺</div></div><h3>From farm to your door.</h3><p>One marketplace for produce, livestock products, fish, equipment and more.</p></div>
+      <div class="stats"><div class="stat"><strong>Local</strong><span>Seller listings</span></div><div class="stat"><strong>Direct</strong><span>Seller contact</span></div><div class="stat"><strong>Flexible</strong><span>Delivery plans</span></div></div>
+    </aside>
+  </section>
+
+  <nav class="main-nav" aria-label="Main navigation">
+    <button class="nav-btn active" data-section="market" onclick="openSection('market')">🛍️ Market</button>
+    <button class="nav-btn" data-section="trending" onclick="openSection('trending')">🔥 Trending</button>
+    <button class="nav-btn" data-section="messages" onclick="openSection('messages')">💬 Messages</button>
+    <button class="nav-btn" data-section="delivery" onclick="openSection('delivery')">🚚 Book Delivery</button>
+    <button class="nav-btn" data-section="account" onclick="openSection('account')">👤 Account</button>
+  </nav>
+
+  <main>
+    <section class="section active" id="market">
+      <div class="section-head"><div><div class="section-label">Explore the marketplace</div><h2>Products people need</h2><p>Browse goods and contact sellers to confirm stock, price and delivery.</p></div><button class="btn secondary" onclick="openSection('account')">＋ List a product</button></div>
+      <div class="searchbar"><input class="control" id="searchInput" placeholder="Search maize, tomatoes, fish, equipment…" oninput="renderProducts()" aria-label="Search products"/><select class="control" id="sortInput" onchange="renderProducts()" aria-label="Sort products"><option value="featured">Sort: Recommended</option><option value="low">Price: Low to high</option><option value="high">Price: High to low</option><option value="name">Name: A–Z</option></select></div>
+      <div class="category-row" id="categories"></div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="feature-strip"><div class="feature"><div class="feature-icon">🌱</div><div><strong>Made for everyday trade</strong><p>Farm produce, food goods, fish and useful equipment.</p></div></div><div class="feature"><div class="feature-icon">🤝</div><div><strong>Deal directly with sellers</strong><p>Ask questions and confirm availability before paying.</p></div></div><div class="feature"><div class="feature-icon">🕒</div><div><strong>Know the delivery estimate</strong><p>Each seller provides an approximate delivery time.</p></div></div></div>
+    </section>
+
+    <section class="section" id="trending">
+      <div class="section-head"><div><div class="section-label">What's getting attention</div><h2>Trending in the marketplace</h2><p>Sample community highlights. Add real updates as your marketplace grows.</p></div></div>
+      <div class="trend-list" id="trendList"></div>
+      <div class="panel" style="margin-top:16px"><h3>Share a market update</h3><p>Tell shoppers what is available, what is in season or what equipment is useful.</p><div class="field"><label for="trendText">Your update</label><textarea class="control" id="trendText" placeholder="Example: Fresh tomatoes available this morning…"></textarea></div><div class="form-actions"><button class="btn" onclick="addTrend()">Post update</button></div></div>
+    </section>
+
+    <section class="section" id="messages">
+      <div class="section-head"><div><div class="section-label">Stay connected</div><h2>Seller contact</h2><p>Use the seller's contact details shown on their product. This demo does not have live in-app chat yet.</p></div></div>
+      <div class="panel"><h3>How to contact a seller</h3><p>Open a product and select “Contact seller” or “Book delivery”. If the seller added a phone number, you can send an enquiry through WhatsApp.</p><div class="info">For safety, confirm the product, final price, delivery cost and delivery time directly with the seller before paying.</div><button class="btn" onclick="openSection('market')">Browse products</button></div>
+      <div class="panel"><h3>Your saved delivery requests</h3><p>Requests created on this device appear here. They are not yet sent to a shared online database.</p><div class="item-list" id="messageOrders"></div></div>
+    </section>
+
+    <section class="section" id="delivery">
+      <div class="section-head"><div><div class="section-label">Seller-arranged delivery</div><h2>Book Delivery</h2><p>Choose a product, request delivery, and agree the details with that product's seller.</p></div></div>
+      <div class="info">Each seller handles delivery for their own products. Delivery times are estimates supplied by sellers and must be confirmed with them.</div>
+      <div class="panel"><h3>Available products with delivery estimates</h3><p>Select a product to request delivery. The seller's estimate appears on each listing.</p><div class="item-list" id="deliveryList"></div></div>
+      <div class="panel"><h3>Your delivery requests</h3><p>Requests you create on this device will be listed below.</p><div class="item-list" id="orderList"></div></div>
+    </section>
+
+    <section class="section" id="account">
+      <div class="section-head"><div><div class="section-label">Your shop space</div><h2>Account & sell products</h2><p>Set up seller details and list an item with your own delivery estimate.</p></div></div>
+      <div class="panel"><h3>Seller details</h3><p>These details are stored in this browser for this prototype.</p><form id="sellerForm"><div class="form-grid"><div class="field"><label for="sellerName">Seller or business name *</label><input class="control" id="sellerName" required placeholder="e.g. Mbare Fresh Produce"/></div><div class="field"><label for="sellerPhone">WhatsApp / phone number</label><input class="control" id="sellerPhone" placeholder="e.g. +263 77 123 4567"/></div><div class="field full"><label for="sellerLocation">Town / delivery area</label><input class="control" id="sellerLocation" placeholder="e.g. Harare, Chitungwiza"/></div></div><div class="form-actions"><button class="btn" type="submit">Save seller details</button></div></form></div>
+      <div class="panel"><h3>List a product</h3><p>Provide a clear product name, price and realistic delivery estimate.</p><form id="productForm"><div class="form-grid"><div class="field"><label for="productName">Product name *</label><input class="control" id="productName" required placeholder="e.g. Fresh tomatoes"/></div><div class="field"><label for="productCategory">Category *</label><select class="control" id="productCategory" required><option value="Crops & Produce">Crops & Produce</option><option value="Livestock Products">Livestock Products</option><option value="Fish & Seafood">Fish & Seafood</option><option value="Farm & Kitchen Equipment">Farm & Kitchen Equipment</option><option value="Groceries & Other Goods">Groceries & Other Goods</option></select></div><div class="field"><label for="productPrice">Price in US dollars *</label><input class="control" id="productPrice" required type="number" min="0.01" step="0.01" placeholder="e.g. 8.00"/></div><div class="field"><label for="productUnit">Sold by / unit</label><input class="control" id="productUnit" placeholder="e.g. 20 kg bag, crate, each"/></div><div class="field"><label for="productStock">Stock / availability</label><input class="control" id="productStock" placeholder="e.g. 30 bags available"/></div><div class="field"><label for="productEta">Approx. delivery time (hours) *</label><input class="control" id="productEta" required type="number" min="1" max="720" step="1" placeholder="e.g. 3"/></div><div class="field full"><label for="productDescription">Description</label><textarea class="control" id="productDescription" placeholder="Quality, quantity, where it is available and any conditions…"></textarea></div></div><div class="notice">Only enter a delivery estimate you can reasonably meet. Customers should confirm the final time, delivery fee and product availability with you.</div><div class="form-actions"><button class="btn" type="submit">＋ Publish product</button><button class="btn ghost" type="reset">Clear form</button></div></form></div>
+      <div class="panel"><h3>Your listings on this device</h3><p>Manage product listings saved in this browser.</p><div class="item-list" id="myProducts"></div></div>
+      <div class="notice">Prototype limitation: listings and requests are stored only in this browser. They are not visible to other customers online yet. Live accounts, shared listings, secure payments and real-time messaging require a connected backend.</div>
+    </section>
+  </main>
+  <footer class="footer"><div><strong>ExploreLink Africa</strong><br/>Trade. Connect. Deliver.</div><div>Prototype version · Verify goods, sellers and delivery arrangements directly.</div></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal-backdrop" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+ <div class="modal"><div class="modal-top"><div><div class="section-label">Seller-arranged delivery</div><h3 id="bookingTitle">Request delivery</h3></div><button class="close" onclick="closeBooking()" aria-label="Close dialog">×</button></div>
+  <div id="bookingProductSummary" class="info"></div>
+  <form id="bookingForm"><input type="hidden" id="bookingProductId"/><div class="form-grid"><div class="field"><label for="customerName">Your name *</label><input class="control" id="customerName" required placeholder="Full name"/></div><div class="field"><label for="customerPhone">Your phone *</label><input class="control" id="customerPhone" required placeholder="Phone / WhatsApp"/></div><div class="field full"><label for="customerLocation">Delivery address / area *</label><input class="control" id="customerLocation" required placeholder="Town, suburb and useful directions"/></div><div class="field"><label for="orderQuantity">Quantity *</label><input class="control" id="orderQuantity" required min="1" type="number" step="1" value="1"/></div><div class="field"><label for="customerTime">Preferred delivery time</label><input class="control" id="customerTime" placeholder="e.g. Today after 2 pm"/></div><div class="field full"><label for="orderNotes">Notes for seller</label><textarea class="control" id="orderNotes" placeholder="Any request or question about the product…"></textarea></div></div><div class="form-actions"><button class="btn" type="submit">Save delivery request</button><button class="btn ghost" type="button" onclick="closeBooking()">Cancel</button></div><p class="muted" style="margin-top:12px">Saving here records the request on this device only; it does not automatically notify the seller. Contact them to confirm.</p></form>
+ </div>
+</div>
+<script>
+const CATEGORIES=['All Products','Crops & Produce','Livestock Products','Fish & Seafood','Farm & Kitchen Equipment','Groceries & Other Goods'];
+const ICONS={'Crops & Produce':'🌽','Livestock Products':'🥚','Fish & Seafood':'🐟','Farm & Kitchen Equipment':'🧰','Groceries & Other Goods':'🛒'};
+const ART={'Crops & Produce':'','Livestock Products':'gold','Fish & Seafood':'blue','Farm & Kitchen Equipment':'purple','Groceries & Other Goods':'orange'};
+const seedProducts=[
+{id:'seed1',name:'Fresh Tomatoes',category:'Crops & Produce',price:5,unit:'10 kg crate',stock:'Seasonal stock · confirm quantity',eta:2,description:'Fresh tomatoes for homes, vendors and food businesses.',seller:'Mbare Fresh Produce',phone:'',location:'Harare',icon:'🍅',seed:true},
+{id:'seed2',name:'Maize Grain',category:'Crops & Produce',price:12,unit:'20 kg bag',stock:'Available while stocks last',eta:4,description:'Maize grain for household or small business needs.',seller:'Green Field Supplies',phone:'',location:'Zimbabwe',icon:'🌽',seed:true},
+{id:'seed3',name:'Farm Eggs',category:'Livestock Products',price:4,unit:'tray',stock:'Ask seller for current quantity',eta:2,description:'Farm eggs. Confirm tray size and availability with the seller.',seller:'Sunrise Poultry',phone:'',location:'Harare',icon:'🥚',seed:true},
+{id:'seed4',name:'Fresh Tilapia',category:'Fish & Seafood',price:6,unit:'per kg',stock:'Fresh stock varies daily',eta:3,description:'Fresh tilapia. Confirm weight, freshness and storage arrangements.',seller:'Lake Catch Traders',phone:'',location:'Harare',icon:'🐟',seed:true},
+{id:'seed5',name:'Farm Hand Tools',category:'Farm & Kitchen Equipment',price:9,unit:'each',stock:'Ask for available tools',eta:5,description:'Useful hand tools for everyday farm and garden work.',seller:'Agri Tools Hub',phone:'',location:'Harare',icon:'🧰',seed:true},
+{id:'seed6',name:'Cooking Oil',category:'Groceries & Other Goods',price:3.5,unit:'2 litre bottle',stock:'Confirm brands and quantity',eta:2,description:'Cooking oil for homes, tuckshops and small kitchens.',seller:'Everyday Wholesale',phone:'',location:'Harare',icon:'🫙',seed:true}
+];
+let products=load('el_products',seedProducts);let orders=load('el_orders',[]);let trends=load('el_trends',[
+{id:'t1',icon:'🌽',title:'What is in season?',body:'Share which crops are ready for market in your area.'},
+{id:'t2',icon:'🧺',title:'Buy closer to home',body:'Look for sellers nearby and ask about collection or delivery.'},
+{id:'t3',icon:'🐟',title:'Fish stock updates',body:'Fish sellers can post fresh-stock updates and available quantities.'},
+{id:'t4',icon:'🧰',title:'Equipment exchange',body:'Find useful farm and kitchen equipment from local sellers.'}
+]);let seller=load('el_seller',{name:'',phone:'',location:''});let selectedCategory='All Products';let activeBookingProduct=null;
+function load(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(e){return fallback}}
+function save(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(e){showToast('Could not save in this browser. Please check storage settings.') }}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function money(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function iconFor(p){return p.icon||ICONS[p.category]||'🛍️'}
+function showToast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>el.classList.remove('show'),2800)}
+function openSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.section===id));if(id==='market')renderProducts();if(id==='delivery')renderDelivery();if(id==='account')renderAccount();if(id==='messages')renderMessages();if(id==='trending')renderTrends();window.scrollTo({top:0,behavior:'smooth'})}
+function renderCategories(){const host=document.getElementById('categories');host.innerHTML=CATEGORIES.map(c=>`<button class="cat-btn ${selectedCategory===c?'active':''}" onclick="chooseCategory('${esc(c)}')">${c==='All Products'?'✦':ICONS[c]||''} ${esc(c)}</button>`).join('')}
+function chooseCategory(c){selectedCategory=c;renderProducts()}
+function filteredProducts(){let q=(document.getElementById('searchInput').value||'').toLowerCase().trim();let a=products.filter(p=>(selectedCategory==='All Products'||p.category===selectedCategory)&&(!q||[p.name,p.category,p.description,p.seller,p.location].join(' ').toLowerCase().includes(q)));const sort=document.getElementById('sortInput').value;if(sort==='low')a.sort((x,y)=>x.price-y.price);if(sort==='high')a.sort((x,y)=>y.price-x.price);if(sort==='name')a.sort((x,y)=>x.name.localeCompare(y.name));return a}
+function productCard(p){return `<article class="product-card"><div class="product-art ${ART[p.category]||''}"><span class="tag">${esc(p.category)}</span><span aria-hidden="true">${iconFor(p)}</span></div><div class="product-body"><h3 class="product-title">${esc(p.name)}</h3><p class="product-desc">${esc(p.description||'Contact seller for product details.')}</p><div class="price">${money(p.price)} <small>/ ${esc(p.unit||'unit')}</small></div><div class="seller-line"><span class="seller-dot">${esc((p.seller||'S').slice(0,1).toUpperCase())}</span><span>${esc(p.seller||'Independent seller')}${p.location?' · '+esc(p.location):''}</span></div><div class="meta-row"><span>🚚 Est. delivery</span><span class="eta">~${esc(p.eta)} hr${Number(p.eta)===1?'':'s'}</span></div><div class="card-actions"><button class="btn small" onclick="openBooking('${esc(p.id)}')">Book delivery</button><button class="btn small secondary" onclick="contactSeller('${esc(p.id)}')">Contact seller</button></div></div></article>`}
+function renderProducts(){renderCategories();const a=filteredProducts();document.getElementById('productGrid').innerHTML=a.length?a.map(productCard).join(''):`<div class="empty"><strong>No products found</strong>Try another search or category, or add a product from Account.</div>`}
+function renderDelivery(){const host=document.getElementById('deliveryList');host.innerHTML=products.length?products.map(p=>`<div class="order-row"><div class="order-symbol">${iconFor(p)}</div><div class="order-main"><strong>${esc(p.name)} · ${money(p.price)} / ${esc(p.unit||'unit')}</strong><div class="muted">${esc(p.seller)}${p.location?' · '+esc(p.location):''}</div><div class="muted">Seller estimate: <b style="color:#ffd88c">about ${esc(p.eta)} hour${Number(p.eta)===1?'':'s'}</b> · confirm with seller</div></div><button class="btn small" onclick="openBooking('${esc(p.id)}')">Request</button></div>`).join(''):`<div class="empty"><strong>No listings yet</strong>Add the first product in Account.</div>`;renderOrders('orderList')}
+function openBooking(id){const p=products.find(x=>x.id===id);if(!p)return;activeBookingProduct=p;document.getElementById('bookingProductId').value=p.id;document.getElementById('bookingTitle').textContent='Request delivery';document.getElementById('bookingProductSummary').innerHTML=`<b>${esc(p.name)}</b> · ${money(p.price)} / ${esc(p.unit||'unit')}<br>Seller: ${esc(p.seller)}${p.location?' · '+esc(p.location):''}<br>Estimated delivery: about ${esc(p.eta)} hour${Number(p.eta)===1?'':'s'} (seller to confirm)`;document.getElementById('orderQuantity').value='1';document.getElementById('bookingModal').classList.add('show');setTimeout(()=>document.getElementById('customerName').focus(),80)}
+function closeBooking(){document.getElementById('bookingModal').classList.remove('show');activeBookingProduct=null}
+document.getElementById('bookingModal').addEventListener('click',e=>{if(e.target.id==='bookingModal')closeBooking()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBooking()});
+document.getElementById('bookingForm').addEventListener('submit',e=>{e.preventDefault();const p=products.find(x=>x.id===document.getElementById('bookingProductId').value);if(!p)return;const o={id:'o'+Date.now(),productId:p.id,productName:p.name,icon:iconFor(p),price:p.price,unit:p.unit,quantity:Number(document.getElementById('orderQuantity').value),seller:p.seller,sellerPhone:p.phone||'',eta:p.eta,customerName:document.getElementById('customerName').value.trim(),customerPhone:document.getElementById('customerPhone').value.trim(),address:document.getElementById('customerLocation').value.trim(),preferredTime:document.getElementById('customerTime').value.trim(),notes:document.getElementById('orderNotes').value.trim(),createdAt:new Date().toISOString(),status:'Needs seller confirmation'};if(!o.quantity||o.quantity<1)return;orders.unshift(o);save('el_orders',orders);e.target.reset();closeBooking();renderDelivery();renderMessages();showToast('Delivery request saved on this device. Contact the seller to confirm.');openSection('delivery')});
+function renderOrders(id){const host=document.getElementById(id);if(!orders.length){host.innerHTML='<div class="empty"><strong>No delivery requests yet</strong>Choose a product and request delivery to see it here.</div>';return}host.innerHTML=orders.map(o=>`<div class="order-row"><div class="order-symbol">${esc(o.icon||'🚚')}</div><div class="order-main"><strong>${esc(o.productName)} · Qty ${esc(o.quantity)}</strong><div class="muted">Seller: ${esc(o.seller)} · ${esc(o.address)}</div><div class="muted">Estimate: about ${esc(o.eta)} hour${Number(o.eta)===1?'':'s'} · Requested ${new Date(o.createdAt).toLocaleString()}</div><div class="muted">Customer: ${esc(o.customerName)} · ${esc(o.customerPhone)}</div><div class="muted">Status: ${esc(o.status)}</div></div><button class="btn small ghost" onclick="deleteOrder('${esc(o.id)}')">Remove</button></div>`).join('')}
+function deleteOrder(id){if(!confirm('Remove this delivery request from this browser?'))return;orders=orders.filter(o=>o.id!==id);save('el_orders',orders);renderDelivery();renderMessages();showToast('Delivery request removed.')}
+function contactSeller(id){const p=products.find(x=>x.id===id);if(!p)return;if(p.phone){const digits=p.phone.replace(/\D/g,'');const msg=encodeURIComponent(`Hello ${p.seller}, I saw your ${p.name} listing on ExploreLink Africa. Is it still available? Please confirm the current price and delivery options.`);window.open(`https://wa.me/${digits}?text=${msg}`,'_blank','noopener');}else{showToast('Seller contact is not listed yet. Add a phone number in Account or use Book delivery to record a request.')}}
+function renderAccount(){document.getElementById('sellerName').value=seller.name||'';document.getElementById('sellerPhone').value=seller.phone||'';document.getElementById('sellerLocation').value=seller.location||'';renderMyProducts()}
+document.getElementById('sellerForm').addEventListener('submit',e=>{e.preventDefault();seller={name:document.getElementById('sellerName').value.trim(),phone:document.getElementById('sellerPhone').value.trim(),location:document.getElementById('sellerLocation').value.trim()};save('el_seller',seller);showToast('Seller details saved on this device.');renderAccount()});
+document.getElementById('productForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('productName').value.trim(),category=document.getElementById('productCategory').value,price=Number(document.getElementById('productPrice').value),eta=Number(document.getElementById('productEta').value);if(!name||!(price>0)||!(eta>=1)){showToast('Please enter a product name, valid price and delivery time.');return}if(!seller.name){showToast('Please save your seller details first.');document.getElementById('sellerName').focus();return}const p={id:'p'+Date.now(),name,category,price,unit:document.getElementById('productUnit').value.trim()||'unit',stock:document.getElementById('productStock').value.trim(),eta,description:document.getElementById('productDescription').value.trim()||'Contact seller for more details.',seller:seller.name,phone:seller.phone,location:seller.location,icon:ICONS[category]||'🛍️',seed:false,createdAt:new Date().toISOString()};products.unshift(p);save('el_products',products);e.target.reset();renderProducts();renderMyProducts();renderDelivery();showToast('Product added to this browser. It is not online for other users yet.');openSection('market')});
+function renderMyProducts(){const mine=products.filter(p=>!p.seed&&p.seller===seller.name);const host=document.getElementById('myProducts');host.innerHTML=mine.length?mine.map(p=>`<div class="order-row"><div class="order-symbol">${iconFor(p)}</div><div class="order-main"><strong>${esc(p.name)} · ${money(p.price)}</strong><div class="muted">${esc(p.category)} · Delivery estimate: about ${esc(p.eta)} hour${Number(p.eta)===1?'':'s'}</div></div><button class="btn small ghost" onclick="deleteProduct('${esc(p.id)}')">Delete</button></div>`).join(''):'<div class="empty"><strong>No products listed by this seller yet</strong>Complete the form above to add your first product.</div>'}
+function deleteProduct(id){if(!confirm('Delete this product from this browser?'))return;products=products.filter(p=>p.id!==id);save('el_products',products);renderProducts();renderMyProducts();renderDelivery();showToast('Product removed.')}
+function renderMessages(){const host=document.getElementById('messageOrders');if(!host)return;if(!orders.length){host.innerHTML='<div class="empty"><strong>No saved requests</strong>Requests you make from Book Delivery will appear here on this device.</div>';return}host.innerHTML=orders.slice(0,5).map(o=>`<div class="message-row"><div class="order-symbol">${esc(o.icon||'💬')}</div><div class="order-main"><strong>${esc(o.productName)} — ${esc(o.seller)}</strong><div class="muted">${esc(o.status)} · ${esc(o.customerPhone)}</div></div><button class="btn small secondary" onclick="openSection('delivery')">View</button></div>`).join('')}
+function renderTrends(){const host=document.getElementById('trendList');host.innerHTML=trends.map(t=>`<article class="trend-card"><div class="trend-icon">${esc(t.icon||'📣')}</div><h3>${esc(t.title)}</h3><p>${esc(t.body)}</p></article>`).join('')}
+function addTrend(){const text=document.getElementById('trendText').value.trim();if(!text){showToast('Write an update first.');return}trends.unshift({id:'t'+Date.now(),icon:'📣',title:'Community market update',body:text});save('el_trends',trends);document.getElementById('trendText').value='';renderTrends();showToast('Update saved on this device.')}
+renderProducts();renderTrends();renderMessages();renderDelivery();
+</script>
 </body>
 </html>
